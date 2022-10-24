@@ -12,9 +12,11 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :update]
     get '/customers/:id/unsubscribe', to: 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdraw', to: 'customers#withdraw', as: 'withdraw'
-    resources :cart_items, only: [:index]
-    resources :orders, only: [:new, :index, :show, :comfilm, :complete]
-    resources :addresses, only: [:index, :edit]
+    delete 'cart_items/destroy_all', as: 'destroy_all'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    post '/orders/confilm', to: 'orders#comfilm', as: 'confilm'
+    resources :orders, only: [:new, :index, :show, :create, :complete]
+    resources :addresses, only: [:index, :create, :destroy, :edit, :update]
   end
 
   # 管理者用

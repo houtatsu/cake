@@ -1,6 +1,8 @@
 <h3>商品編集</h3>
 
 <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
+  <label for="inputImage">商品画像</label>
+  <%= f.file_field :image, accept: "image/*" %><br>
   <label for="inputName">商品名</label>
   <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名" %><br>
   <label for="inputIntroduction">商品説明</label>
@@ -10,7 +12,7 @@
   <label for="inputPrice">税抜価格</label>
   <%= f.number_field :price, id:"inputPrice", placeholder:"税抜価格" %>円<br>
   <label for="inputIs_active">販売ステータス</label>
-  <%= f.radio_button :is_active, "on_sale", autofocus: true, id:"inputIs_active", placeholder:"販売ステータス" %> 販売中
-  <%= f.radio_button :is_active, "stopping_sales", autofocus: true, id:"inputIs_active", placeholder:"販売ステータス" %> 販売停止中<br>
+  <%= f.radio_button :is_active, placeholder:"販売ステータス" %> 販売中
+  <%= f.radio_button :is_active,  placeholder:"販売ステータス" %> 販売停止中<br>
   <%= f.submit '変更を保存' %>
 <% end %>

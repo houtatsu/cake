@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2022_10_16_061346) do
     t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "is_active", default: true, null: false
+    t.boolean "is_active", default: false, null: false
   end
 
   create_table "order_details", force: :cascade do |t|
