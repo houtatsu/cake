@@ -1,7 +1,18 @@
-<p>ようこそ、ながのCAKEへ！</p>
-<p>このサイトは、ケーキ販売のECサイトになります。</p>
-<p>会員でない方も商品の閲覧はできますが、</p>
-<p>購入には会員登録が必要になります。</p>
-<h3>
-  <string>新着商品</string>
-</h3>
+<div class="container">
+  <div class="row">
+    <div class="">
+      <p>ようこそ、ながのCAKEへ！</p>
+      <p>このサイトは、ケーキ販売のECサイトになります。</p>
+      <p>会員でない方も商品の閲覧はできますが、</p>
+      <p>購入には会員登録が必要になります。</p>
+      <h3>
+        <string>新着商品</string>
+      </h3>
+      <% @items.each do |item| %>
+        <%= image_tag item.get_image %>
+        <p><%= item.name %></p>
+        <p>¥<%= item.price.to_s(:delimited) %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
