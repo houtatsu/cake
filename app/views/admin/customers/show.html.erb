@@ -4,7 +4,7 @@
       <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
       <div>
         <p>会員ID<%= @customer.id %></p>
-        <p>氏名<%= @customer.last_name && @customer.first_name %></p>
+        <p>氏名<%= (@customer.last_name + @customer.first_name) %></p>
         <p>フリガナ<%= @customer.last_name_kana && @customer.first_name_kana %></p>
         <p>郵便番号<%= @customer.postal_code %></p>
         <p>住所<%= @customer.address %></p>

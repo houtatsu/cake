@@ -27,7 +27,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'homes#top'
-    resources :orders, only: [:show]
+    patch 'orders/:order_id/order_details/:id', to: 'admin#order_details', as: 'order_details'
+    resources :orders, only: [:show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :create, :show, :index, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]

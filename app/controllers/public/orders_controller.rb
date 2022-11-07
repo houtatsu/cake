@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  # before_action :authenticate_customer!, except: [:index, :show]
   def new
     @order = Order.new
     @customer = Customer.find(current_customer.id)
@@ -9,9 +10,25 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    order_details = current_customer.cart_items.all
+     @order = current_customer.orders.new(order_params)
+    if @order.save
+      order_details.each do |cart_item|
+        order_detail = OrderDetail.new
+        order_detail.item_id = cart_item.item_id
+        order_detail.order_id = @order.id
+        order_detail.amount = cart_item.amount
+        order_detail.price = cart_item.item.price
+        order_detail.save
+      end
+    redirect_to public_complete_path
+    order_details.destroy_all
+    end
   end
 
   def show
+    @order = Order.find(params[:id])
+    @shipping_cost = 800
   end
 
   def comfilm
@@ -40,6 +57,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment)
   end
 end

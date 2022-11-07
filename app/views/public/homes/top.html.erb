@@ -13,6 +13,8 @@
         <p><%= item.name %></p>
         <p>¥<%= item.price.to_s(:delimited) %></p>
       <% end %>
+
+      <%= link_to "全ての商品を見る>", public_items_path %>
     </div>
   </div>
 </div>
