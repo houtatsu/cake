@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-3">
       <h3>商品編集</h3>
       <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
         <label for="inputImage">商品画像</label>
@@ -14,8 +14,8 @@
         <label for="inputPrice">税抜価格</label>
         <%= f.number_field :price, id:"inputPrice", placeholder:"税抜価格" %>円<br>
         <label for="inputIs_active">販売ステータス</label>
-        <%= f.radio_button :is_active, placeholder:"販売ステータス" %> 販売中
-        <%= f.radio_button :is_active,  placeholder:"販売ステータス" %> 販売停止中<br>
+        <%= f.radio_button :is_active, true, placeholder:"販売ステータス" %> 販売中
+        <%= f.radio_button :is_active, false, placeholder:"販売ステータス" %> 販売停止中<br>
         <%= f.submit '変更を保存', class:"btn btn-success" %>
       <% end %>
     </div>

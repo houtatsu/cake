@@ -10,9 +10,9 @@
           <tr><th>支払方法</th><td><%= @order.payment_method_i18n %></td></tr>
           <tr>
             <th>注文ステータス</th>
-            <td><%#= @order.status_i18n %>
+            <td>
               <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-                <%= f.select :status_i18n, [['入金待ち',0], ['入金確認',1], ['製作中',2], ['発送準備中',3], ['発送済み',4]]%>
+                <%= f.select :status, Order.statuses_i18n.invert %>
                 <%= f.submit "更新", class:"btn btn-success" %>
               <% end %>
             </td>
@@ -39,9 +39,8 @@
                 <td><%= order_detail.amount %></td>
                 <td><%= (order_detail.item.with_tax_price * order_detail.amount).to_s(:delimited) %></td>
                 <td>
-                  <%#= order_detail.making_status_i18n %>
-                  <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
-                    <%= f.select :making_status_i18n, [['製作不可',0], ['製作待ち',1], ['製作中',2], ['製作完了',3]]%>
+                  <%= form_with model: @order_detail, url: admin_order_details_path(order_detail.id), method: :patch do |f| %>
+                    <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
                     <%= f.submit "更新", class:"btn btn-success" %>
                   <% end %>
                 </td>

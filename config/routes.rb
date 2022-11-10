@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "search" => "searches#search"
   # 顧客用
   devise_for :customers, skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'homes#top'
-    patch 'orders/:order_id/order_details/:id', to: 'admin#order_details', as: 'order_details'
+    patch 'orders/:order_id/order_details/:id', to: 'order_details#update', as: 'order_details'
     resources :orders, only: [:show, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :create, :show, :index, :edit, :update]

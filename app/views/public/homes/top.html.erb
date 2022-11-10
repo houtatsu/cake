@@ -9,7 +9,9 @@
         <string>新着商品</string>
       </h3>
       <% @items.each do |item| %>
-        <%= image_tag item.get_image %>
+        <%= link_to public_item_path(item.id) do %>
+          <%= image_tag item.get_image, size: "200x200" %>
+        <% end %>
         <p><%= item.name %></p>
         <p>¥<%= item.price.to_s(:delimited) %></p>
       <% end %>
