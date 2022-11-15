@@ -1,10 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div class="">
-      <h3>注文履歴一覧</h3>
-      <table class="table table-striped">
+  <div class="row no-gutters">
+    <div class="col-12 d-inline-flex p-2 bd-highlight">
+      <h4 class="bg-secondary">注文履歴一覧</h4>
+    </div>
+    <div class="col-6 text-center">
+      <table class="table">
         <thead>
-          <tr>
+          <tr class="table-secondary">
             <th>購入日時</th>
             <th>購入者</th>
             <th>注文個数</th>
@@ -26,7 +28,7 @@
           <% end %>
         </tbody>
       </table>
-      <%= paginate @orders %>
     </div>
+      <%= paginate @orders %>
   </div>
 </div>

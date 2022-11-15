@@ -1,13 +1,18 @@
 <div class="container">
-  <div class="row">
-    <div class="">
-      <p>ようこそ、ながのCAKEへ！</p>
+  <div class="row text-center border border-5">
+    <div class="col-10">
+      <p >ようこそ、ながのCAKEへ！</p>
       <p>このサイトは、ケーキ販売のECサイトになります。</p>
       <p>会員でない方も商品の閲覧はできますが、</p>
       <p>購入には会員登録が必要になります。</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-inline-flex p-2 bd-highlight">
       <h3>
         <string>新着商品</string>
       </h3>
+    </div>
       <% @items.each do |item| %>
         <%= link_to public_item_path(item.id) do %>
           <%= image_tag item.get_image, size: "200x200" %>
@@ -15,8 +20,8 @@
         <p><%= item.name %></p>
         <p>¥<%= item.price.to_s(:delimited) %></p>
       <% end %>
+  </div>
 
       <%= link_to "全ての商品を見る>", public_items_path %>
-    </div>
-  </div>
+
 </div>

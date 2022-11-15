@@ -1,7 +1,9 @@
 <div class="container">
-  <div class="row">
-    <div class="">
-      <h2>新規会員登録</h2>
+  <div class="row no-gutters">
+    <div class="col-12 d-inline-flex p-2 bd-highlight">
+      <h4 class="bg-secondary">新規会員登録</h4>
+    </div>
+  </div>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
 
@@ -54,8 +56,9 @@
           <%= f.submit "新規登録", class:"btn btn-success" %>
         </div>
       <% end %>
-
-      <%= render "public/shared/links" %>
-    </div>
-  </div>
+      <div class="row">
+        <div class="col-10">
+          <%= render "public/shared/links" %>
+        </div>
+      </div>
 </div>

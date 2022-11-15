@@ -1,13 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="">
-      <h3>注文履歴詳細</h3>
-      <div>
-        <table class="">
-          <tr><th>購入者</th><td><%= link_to (@customer.last_name + @customer.first_name), admin_customer_path(@order.id) %></td></tr>
-          <tr><th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
-          <tr><th>配送先</th><td>〒<%= @order.postal_code %><%= @order.address %><br><%= @order.name %></td></tr>
-          <tr><th>支払方法</th><td><%= @order.payment_method_i18n %></td></tr>
+    <div class="col-12 d-inline-flex p-2 bd-highlight">
+      <h4 class="bg-secondary">注文履歴詳細</h4>
+    </div>
+  </div>
+    <div class="row mb-5">
+      <div class="col-12">
+        <table>
+          <tr>
+            <th>購入者</th><td><%= link_to (@customer.last_name + @customer.first_name), admin_customer_path(@order.id) %></td>
+          </tr>
+          <tr>
+            <th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <th>配送先</th><td>〒<%= @order.postal_code %><%= @order.address %><br><%= @order.name %></td>
+          </tr>
+          <tr>
+            <th>支払方法</th><td><%= @order.payment_method_i18n %></td>
+          </tr>
           <tr>
             <th>注文ステータス</th>
             <td>
@@ -19,11 +30,12 @@
           </tr>
         </table>
       </div>
-
-      <div>
-        <table class="table table-striped">
+    </div>
+    <div class="row">
+      <div class="col-7">
+        <table class="table">
           <thead>
-            <tr>
+            <tr class="table-secondary">
               <th>商品名</th>
               <th>単価(税込)</th>
               <th>数量</th>
@@ -49,7 +61,7 @@
           </tbody>
         </table>
       </div>
-      <div>
+      <div class="col-3">
         <table>
           <tr><th>商品合計</th><td><%= (@order.total_payment - @shipping_cost).to_s(:delimited) %>円</td></tr>
           <tr><th>送料</th><td><%= @shipping_cost %>円</td></tr>
@@ -57,5 +69,4 @@
         </table>
       </div>
     </div>
-  </div>
 </div>

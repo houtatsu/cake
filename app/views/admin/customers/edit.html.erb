@@ -1,29 +1,69 @@
 <div class="container">
-  <div class="row">
-    <div class="">
-      <h3><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h3>
+  <div class="row no-gutters">
+    <div class="col-12 d-inline-flex p-2 bd-highlight">
+      <h4 class="bg-secondary"><%= (@customer.last_name + @customer.first_name) %>さんの会員情報編集</h4>
+    </div>
       <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
-        <label>会員ID</label>
-        <%= @customer.id %><br>
-        <label>氏名</label>
+      <div class="row mb-3">
+        <label class="col-3">会員ID</label>
+        <div class="col-9">
+          <%= @customer.id %><br>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">氏名</label>
+        <div class="col-sm-5">
           <%= f.text_field :last_name, autofocus: true, id:"inputLast_name", placeholder:"姓"%>
+        </div>
+        <div class="col-sm-4">
           <%= f.text_field :first_name, autofocus: true, id:"inputFist_name", placeholder:"名" %><br>
-        <label>フリガナ</label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">フリガナ</label>
+        <div class="col-sm-5">
           <%= f.text_field :last_name_kana, autofocus: true, id:"inputLast_name_kana", placeholder:"姓カナ" %>
+        </div>
+        <div class="col-sm-4">
           <%= f.text_field :first_name_kana, autofocus: true, id:"inputFist_name_kana", placeholder:"名カナ" %><br>
-        <label>郵便番号</label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">郵便番号</label>
+        <div class="col-sm-9">
           <%= f.number_field :postal_code, autofocus: true, id:"inputPostal_code", placeholder:"郵便番号" %><br>
-        <label>住所</label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">住所</label>
+        <div class="col-sm-9">
           <%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"住所" %><br>
-        <label>電話番号</label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">電話番号</label>
+        <div class="col-sm-9">
           <%= f.number_field :telephone_number, autofocus: true, id:"inputTelephone_number", placeholder:"電話番号" %><br>
-        <label>メールアドレス</label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">メールアドレス</label>
+        <div class="col-sm-9">
           <%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"メールアドレス" %><br>
-        <label>会員ステータス</label>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">会員ステータス</label>
+        <div class="col-sm-9">
           <%= f.radio_button :is_deleted, "valid", autofocus: true, id:"inputIs_deleted", placeholder:"会員ステータス" %> 有効
           <%= f.radio_button :is_deleted, "unsubscribe", autofocus: true, id:"inputIs_deleted", placeholder:"会員ステータス" %> 退会<br>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12 text-center">
           <%= f.submit '変更を保存', class:"btn btn-success" %>
+        </div>
+      </div>
       <% end %>
-    </div>
   </div>
 </div>
