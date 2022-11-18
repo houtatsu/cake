@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about', to: 'homes#about', as: 'about'
     resources :items, only: [:index, :show]
-    resources :customers, only: [:show, :edit, :update]
     get '/customers/:id/unsubscribe', to: 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/:id/withdraw', to: 'customers#withdraw', as: 'withdraw'
+    resources :customers, only: [:show, :edit, :update]
     delete 'cart_items/destroy_all', as: 'destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
     post '/orders/confilm', to: 'orders#comfilm', as: 'confilm'

@@ -1,11 +1,15 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-12 d-inline-flex p-2 bd-highlight">
+    <div class="col-6 d-inline-flex p-2 bd-highlight">
       <h4 class="bg-secondary">ショッピングカート</h4>
     </div>
-			<%= link_to "カートを空にする", public_destroy_all_path, method: :delete, class:"btn btn-danger btn-sm" %>
-			<table border=1>
-			  <thead>
+    <div class="col-6 d-flex flex-row-reverse p-2">
+    	<%= link_to "カートを空にする", public_destroy_all_path, method: :delete, class:"btn btn-danger" %>
+    </div>
+  </div>
+  <div class="row no-gutters">
+			<table border=1 class="col-12">
+				<thead>
 					<tr>
 						<th>商品名</th>
 						<th>単価(税込)</th>
@@ -32,16 +36,16 @@
 					<% end %>
 				</tbody>
 			</table>
-
-			<%= link_to "買い物を続ける", public_root_path, class:"btn btn-primary" %>
-
-			<table border=1>
-				<tr>
-					<td>合計金額</td><td><%= @total_amount.to_s(:delimited) %></td>
-				</tr>
-			</table>
+				<p class="col-9 p-2"><%= link_to "買い物を続ける", public_root_path, class:"btn btn-primary" %></p>
+				<table border=1 class="col-3">
+					<tr>
+						<td>合計金額</td><td><%= @total_amount.to_s(:delimited) %></td>
+					</tr>
+				</table>
+		<div class="col-12 text-center">
 			<% if @cart_items.any? %>
-				<%= link_to "情報入力に進む", new_public_order_path, class:"btn btn-success ml-4" %>
+				<%= link_to "情報入力に進む", new_public_order_path, class:"btn btn-success" %>
 			<% end %>
-  </div>
+		</div>
+	</div>
 </div>

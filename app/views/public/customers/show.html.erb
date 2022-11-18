@@ -1,13 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="">
-      <h3>マイページ</h3>
-      <h4>
-        <strong>登録情報</strong>
-        <%= link_to "編集する", edit_public_customer_path, class:"btn btn-success" %>
+    <div class="col-12 d-inline-flex p-2 bd-highlight">
+      <h4 class="bg-secondary">マイページ</h4>
+    </div>
+  </div>
+      <h4 class="row mb-3 no-gutters">
+        <strong class="col-2">登録情報</strong>
+        <div class="col-10">
+          <%= link_to "編集する", edit_public_customer_path, class:"btn btn-success" %>
+        </div>
       </h4>
-
-      <table border=2 >
+      <div class="row no-gutters">
+      <table border=2 class="col-6" >
         <tr><th>氏名</th><td><%= @customer.last_name %> <%= @customer.first_name %></td></tr>
         <tr><th>カナ</th><td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td></tr>
         <tr><th>郵便番号</th><td><%= @customer.postal_code %></td></tr>
@@ -15,15 +19,17 @@
         <tr><th>電話番号</th><td><%= @customer.telephone_number %></td></tr>
         <tr><th>メールアドレス</th><td><%= @customer.email %></td></tr>
       </table>
-
-      <h4>
-        <strong>配送先</strong>
-        <%= link_to "一覧を見る", public_addresses_path, class:"btn btn-primary" %>
+      </div>
+      <h4 class="row p-2 no-gutters">
+        <strong class="col-2">配送先</strong>
+        <div class="col-10">
+          <%= link_to "一覧を見る", public_addresses_path, class:"btn btn-primary" %>
+        </div>
       </h4>
-      <h4>
-        <strong>注文履歴</strong>
-        <%= link_to "一覧を見る", public_orders_path, class:"btn btn-primary" %>
+      <h4 class="row p-2 no-gutters">
+        <strong class="col-2">注文履歴</strong>
+        <div class="col-10">
+          <%= link_to "一覧を見る", public_orders_path, class:"btn btn-primary" %>
+        </div>
       </h4>
-    </div>
-  </div>
 </div>

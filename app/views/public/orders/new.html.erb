@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h3>注文情報入力</h3>
+    <div class="col-sm-12 d-inline-flex p-2 bd-highlight">
+      <h4 class="bg-secondary">注文情報入力</h4>
+    </div>
       <%= form_with model: @order, url: public_confilm_path, method: :post do |f| %>
         <label>
           <strong>支払方法</strong>
@@ -19,8 +20,10 @@
         <div>
           <%= f.radio_button :select_address, "0" %>
           <%= f.label :address_id, "ご自身の住所" %>
-          <p>〒<%= @customer.postal_code %><%= @customer.address %></p>
-          <p><%= @customer.last_name %><%= @customer.first_name %></p>
+          <p>
+            〒<%= @customer.postal_code %> <%= @customer.address %><br>
+            <%= (@customer.last_name + @customer.first_name) %>
+          </p>
         </div>
         <div>
           <%= f.radio_button :select_address, "1" %>
@@ -30,14 +33,28 @@
         <div>
           <%= f.radio_button :select_address, "2" %>
           <%= f.label :address_id, "新しいお届け先" %>
-          <p>郵便番号(ハイフンなし)<%= f.text_field :postal_code, placeholder:"郵便番号" %></p>
-          <p>住所<%= f.text_field :address, placeholder:"住所" %></p>
-          <p>宛名<%= f.text_field :name, placeholder:"宛名" %></p>
+          <div class="row mb-3">
+            <label class="col-sm-6">郵便番号(ハイフンなし)</label>
+            <div class="col-sm-6">
+              <%= f.number_field :postal_code, placeholder:"郵便番号" %>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-6">住所</label>
+            <div class="col-sm-6">
+              <%= f.text_field :address, placeholder:"住所" %>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-6">宛名</label>
+            <div class="col-sm-6">
+              <%= f.text_field :name, placeholder:"宛名" %>
+            </div>
+          </div>
         </div>
-        <div>
+        <div class="text-center">
           <%= f.submit '確認画面へ進む', class:"btn btn-primary" %>
         </div>
       <% end %>
-    </div>
   </div>
 </div>
