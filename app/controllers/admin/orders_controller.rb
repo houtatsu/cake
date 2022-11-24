@@ -10,7 +10,12 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
-    redirect_to admin_order_path(@order.id)
+    if params[:order][:status] == "payment_confirmation"
+      @order.order_details.each do |order_detail|
+        order_detail.update(making_status: "production_pending")
+      end
+    end
+    redirect_to admin_order_path(@order)
   end
 
   private
